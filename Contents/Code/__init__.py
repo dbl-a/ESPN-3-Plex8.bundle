@@ -1,4 +1,5 @@
 # PMS plugin framework
+from PMS import *
 import datetime
 
 ####################################################################################################
@@ -47,7 +48,7 @@ def VideoPage(sender, pageUrl, predict):
         dir = MediaContainer(title2=sender.itemTitle, viewGroup="List", noCache=True)
     else:
         dir = MediaContainer(title2=sender.itemTitle, viewGroup="InfoList", noCache=True)
-    content = XML.ElementFromURL(pageUrl, cacheTime=0).xpath(predict)
+    content = XML.ElementFromURL(pageUrl, cacheTime=0, encoding='iso-8859-1').xpath(predict)
     eventMap = dict()
     for item in content:
         eventId = item.get('id')
